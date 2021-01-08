@@ -1,23 +1,15 @@
 # KEGG-Annotation-Genome-Clustering
-Cluster genomes based on KEGG annotation content. 
 
 This program runs KOFAMSCAN (-mapper option) on a set of input protein fasta files. It then clusters the genomes by similarity based on their KEGG annotations. 
 
-Fasta file format requirements:
+Please format fasta files with a simple name that is one string with no spaces or special characters besides dashes or underscores. The shorter and simpler the name, the better. The fasta file name should be formatted so that everything before .faa is what you want your genomes to be called in downstream figures.
+It is best of the fasta headers are formatted in a way that is easily identifiable for downstream parsing. Example
 
-Please format fasta files with a simple name that is one string with no spaces or special characters besides dashes or underscores. The shorter and simpler the name, the better.
-
-The fasta file name should be formatted so that everything before .faa is what you want your genomes to be called in downstream figures.
-Please ensure the fasta headers are formatted in a simple way that is one string of text.  It is best that the individual ORFs are formatted in a way that is easily identifiable for downstream parsing.
-
-Example of an ideal fasta header: 
-
->GenomeName_Orf1
+">GenomeName_Orf1"
  
 If you are using genomes downloaded from a database like NCBI or IMG it is probably best to use the identifiers used on those databases for future reference:
 
->ImgGenomeeID_ImgOrfID 
-
+">ImgGenomeeID_ImgOrfID" 
 
 The resulting KOFAMSCAN annotation files are used to build a Genome x KEGG ID count table, with KEGG ID's missing from a given genome counted as 0
 The KEGG content table is an output (PREFIX__KO_Table.txt).  Additionally, the genomes are hierarchically clustered based on KEGG content using the euclidean distance of KEGG presence/absence data and the Wards linkage method.
@@ -30,3 +22,12 @@ Be sure to load the Conda environment that KOFAMSCAN is active prior to running.
 
 The necessary HMM profiles and KO IDs to run KOFAMSCAN can be downloaded from this link: ftp://ftp.genome.jp/pub/db/kofam/
 Input arguments allow you to point to where you have stored those files for running KOFAMSCAN
+
+# Comparison to Annotation-independent workflows
+This workflow was tested against an annotation-independent workflow that clusters genomes based on protein families (links below). The sequence similarity calculation followed by MCL clustering used is similar to the pangenome workflow in the Anvio program.   
+
+https://github.com/raphael-upmc/proteinClusteringPipeline and in this publication: https://www.nature.com/articles/s41467-019-12171-z
+
+The Mantel test in the R library Vegan was used to compare the data resulting from this KEGG annotation based genome-clustering, and annotation-independent protein-family based genome-clustering mentioned above. The comparison shows that the resulting data from both workflows is highly correlated (R2 = 0.9332 for Euclidean distance and 0.8625 for the Jaccard distance), and thus the intepretations will be similar. 
+
+
