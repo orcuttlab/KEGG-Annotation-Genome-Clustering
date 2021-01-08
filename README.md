@@ -30,4 +30,3 @@ https://github.com/raphael-upmc/proteinClusteringPipeline and in this publicatio
 
 The Mantel test in the R library Vegan was used to compare the data resulting from this KEGG annotation based genome-clustering, and annotation-independent protein-family based genome-clustering mentioned above. The comparison shows that the resulting data from both workflows is highly correlated (R2 = 0.9332 for Euclidean distance and 0.8625 for the Jaccard distance), and thus the intepretations will be similar. 
 
-
