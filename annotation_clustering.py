@@ -2,6 +2,8 @@
 
 This program runs KOFAMSCAN (-mapper option) on a set of input protein fasta files. It then clusters the genomes by similarity based on their KEGG annotations. 
 
+Written by Tim D'Angelo (tdangelo@bigelow.org)
+
 Fasta file format requirements:
 
 Please format fasta files with a simple name that is one string with no spaces or special characters besides dashes (-) or underscores (_). The shorter and simpler the name, the better.
